@@ -1,12 +1,15 @@
+import DeletePostButton from '@/components/delete-post-button'
 import PostUser from '@/components/post-user'
-import { fetchPosts } from '@/lib/posts-gRPC-client'
+import { fetchPosts, removePost } from '@/lib/posts-gRPC-client'
 import {
   Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Divider
+  Divider,
+  Tooltip,
+  Link
 } from '@nextui-org/react'
 import { Pencil, Trash } from 'lucide-react'
 
@@ -14,13 +17,17 @@ export default async function Posts() {
   const posts = await fetchPosts()
   return (
     <>
-      <main className="h-full w-full">
+      <main className="w-full">
         <h1>Posts</h1>
-
-        <section className="flex flex-col h-full w-full items-center">
+        <div className="flex w-full justify-end">
+          <Button as={Link} color="primary" variant="flat" href="/posts/create">
+            Create post
+          </Button>
+        </div>
+        <section className="flex flex-col gap-8 w-full items-center">
           {posts.map((post) => {
             return (
-              <Card className="w-1/4">
+              <Card key={post.id} className="w-1/4">
                 <CardHeader>
                   <PostUser id={post.authorId} />
                 </CardHeader>
@@ -31,12 +38,20 @@ export default async function Posts() {
                 </CardBody>
                 <Divider />
                 <CardFooter className="flex w-full gap-4 justify-end ">
-                  <Button isIconOnly color="primary" variant="flat">
-                    <Pencil size={20} />
-                  </Button>
-                  <Button isIconOnly color="danger" variant="flat">
-                    <Trash size={20} />
-                  </Button>
+                  <Tooltip color="primary" content="Modify post">
+                    <Button
+                      as={Link}
+                      isIconOnly
+                      color="primary"
+                      variant="flat"
+                      href={`/posts/${post.id}`}
+                    >
+                      <Pencil size={20} />
+                    </Button>
+                  </Tooltip>
+                  <Tooltip color="danger" content="Delete post">
+                    <DeletePostButton id={post.id} />
+                  </Tooltip>
                 </CardFooter>
               </Card>
             )

@@ -16,7 +16,7 @@ export default async function User({ params }: { params: { id: number } }) {
         name={`${user.firstName} ${user.lastName}`}
       />
 
-      <form className=" h-full flex flex-col gap-4 w-1/2">
+      <form className="h-full flex flex-col gap-4 w-1/2">
         <Input
           isReadOnly
           defaultValue={user.id.toString()}

@@ -57,16 +57,13 @@ export async function createPost(formData: FormData): Promise<void> {
   const authorId = parseInt(formData.get('authorId') as string, 10)
 
   await new Promise((resolve, reject) => {
-    client.Create(
-      { title, content, authorId },
-      (error: any, response: any) => {
-        if (error) {
-          reject(error)
-        } else {
-          resolve(response.post)
-        }
+    client.Create({ title, content, authorId }, (error: any, response: any) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve(response.post)
       }
-    )
+    })
   })
 
   revalidatePath('/posts')
@@ -78,17 +75,18 @@ export async function updatePost(formData: FormData): Promise<void> {
   const title = formData.get('title') as string
   const content = formData.get('content') as string
 
+  console.log(formData)
+
+  console.log(id, title, content)
+
   await new Promise((resolve, reject) => {
-    client.Update(
-      { id, title, content },
-      (error: any, response: any) => {
-        if (error) {
-          reject(error)
-        } else {
-          resolve(response.post)
-        }
+    client.Update({ id, title, content }, (error: any, response: any) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve(response)
       }
-    )
+    })
   })
 
   revalidatePath(`/posts/${id}`)
