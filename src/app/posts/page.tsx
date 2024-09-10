@@ -18,7 +18,6 @@ export default async function Posts() {
   return (
     <>
       <main className="w-full">
-        <h1>Posts</h1>
         <div className="flex w-full justify-end">
           <Button as={Link} color="primary" variant="flat" href="/posts/create">
             Create post

@@ -7,7 +7,6 @@ export default async function Users() {
   return (
     <>
       <main>
-        <h1>Users</h1>
         <section className="w-full justify-center">
           <UsersTable users={users} />
         </section>
