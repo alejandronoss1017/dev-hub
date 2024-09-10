@@ -75,10 +75,6 @@ export async function updatePost(formData: FormData): Promise<void> {
   const title = formData.get('title') as string
   const content = formData.get('content') as string
 
-  console.log(formData)
-
-  console.log(id, title, content)
-
   await new Promise((resolve, reject) => {
     client.Update({ id, title, content }, (error: any, response: any) => {
       if (error) {
