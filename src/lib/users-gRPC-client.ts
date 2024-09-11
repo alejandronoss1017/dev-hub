@@ -83,6 +83,9 @@ export async function updateUser(formData: FormData): Promise<void> {
   const firstName = formData.get('firstName') as string
   const lastName = formData.get('lastName') as string
 
+  console.log('FormData', formData)
+
+  console.log({ id, email, firstName, lastName })
 
   await new Promise((resolve, reject) => {
     client.Update(
