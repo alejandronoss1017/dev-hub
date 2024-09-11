@@ -23,7 +23,7 @@ const postsProto = loadPackageDefinition(packageDefinition).posts
 
 // Create the gRPC client
 const client = new (postsProto as any).PostsService(
-  'localhost:5000',
+  'business-logic-layer:5000',
   credentials.createInsecure()
 )
 
