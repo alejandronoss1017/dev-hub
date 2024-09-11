@@ -10,8 +10,6 @@ services:
     depends_on:
       business-logic-layer:
         condition: service_healthy
-    networks:
-      - dev-network
 
   # Business Logic Layer (From GitHub)
   business-logic-layer:
@@ -22,8 +20,6 @@ services:
     depends_on:
       persistence-layer:
         condition: service_healthy
-    networks:
-      - dev-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
       interval: 30s
@@ -41,15 +37,9 @@ services:
       - "3000:3000"
     environment:
       - DATABASE_URL=${DATABASE_URL}
-    networks:
-      - dev-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 5s
-
-networks:
-  dev-network:
-    driver: bridge

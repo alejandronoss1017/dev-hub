@@ -22,10 +22,10 @@ export default function Header() {
         <p className="font-bold text-inherit ml-4">Dev hub</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem isActive={pathName.startsWith('/posts')}>
+        <NavbarItem isActive={pathName?.startsWith('/posts')}>
           <Link href="/posts">Posts</Link>
         </NavbarItem>
-        <NavbarItem isActive={pathName.startsWith('/users')}>
+        <NavbarItem isActive={pathName?.startsWith('/users')}>
           <Link href="/users" aria-current="page">
             Users
           </Link>
