@@ -23,7 +23,7 @@ const usersProto = loadPackageDefinition(packageDefinition).users
 
 // Create the gRPC client
 const client = new (usersProto as any).UsersService(
-  'localhost:5000',
+  'dns:///business-logic-layer:5000',
   credentials.createInsecure()
 )
 

@@ -1,3 +1,5 @@
+"use-client";
+
 import DeletePostButton from '@/components/delete-post-button'
 import PostUser from '@/components/post-user'
 import { fetchPosts, removePost } from '@/lib/posts-gRPC-client'

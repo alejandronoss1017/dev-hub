@@ -7,6 +7,9 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import path from 'path'
 
+const BUSINESS_LOGIC_HOST = process.env.BUSINESS_LOGIC_HOST || 'localhost';
+const BUSINESS_LOGIC_PORT = process.env.BUSINESS_LOGIC_PORT || '5000';
+
 const PROTO_PATH = path.resolve(process.cwd(), 'src/proto/posts.proto')
 
 // Load the .proto file
@@ -23,7 +26,7 @@ const postsProto = loadPackageDefinition(packageDefinition).posts
 
 // Create the gRPC client
 const client = new (postsProto as any).PostsService(
-  'localhost:5000',
+  'dns:///business-logic-layer:5000',
   credentials.createInsecure()
 )
 
