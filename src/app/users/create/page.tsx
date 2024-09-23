@@ -1,6 +1,7 @@
 import { SubmitButton } from '@/components/submit-button'
 import { createUser } from '@/lib/users-gRPC-client'
 import { Button, Input } from '@nextui-org/react'
+import Link from 'next/link'
 
 export default function CreateUser() {
   return (
@@ -33,7 +34,7 @@ export default function CreateUser() {
             variant="bordered"
           />
           <span className="flex gap-4 justify-end">
-            <Button variant="flat" color="danger">
+            <Button variant="flat" color="danger" as={Link} href='/users'>
               Cancel
             </Button>
             <SubmitButton

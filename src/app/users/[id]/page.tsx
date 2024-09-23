@@ -1,6 +1,7 @@
 import { SubmitButton } from '@/components/submit-button'
 import { fetchUser, updateUser } from '@/lib/users-gRPC-client'
 import { Button, Input, User as NextUIUser } from '@nextui-org/react'
+import Link from 'next/link'
 
 export default async function User({ params }: { params: { id: number } }) {
   const user = await fetchUser(params.id)
@@ -54,7 +55,7 @@ export default async function User({ params }: { params: { id: number } }) {
           variant="bordered"
         />
         <span className="flex gap-4 justify-end">
-          <Button variant="flat" color="danger">
+          <Button variant="flat" color="danger" as={Link} href='/users'>
             Cancel
           </Button>
           <SubmitButton formAction={updateUser} variant="flat" color="primary">
