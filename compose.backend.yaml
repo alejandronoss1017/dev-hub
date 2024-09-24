@@ -7,7 +7,7 @@ services:
   # Business Logic Layer (From GitHub)
   business-logic-layer:
     build:
-      context: https://github.com/alejandronoss1017/dev-hub-services.git#develop
+      context: https://github.com/alejandronoss1017/dev-hub-services.git#main
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
@@ -21,7 +21,7 @@ services:
   # Persistence Layer (From GitHub)
   persistence-layer:
     extends:
-      file: https://github.com/alejandronoss1017/dev-hub-data.git#develop
+      file: https://github.com/alejandronoss1017/dev-hub-data.git#main
       service: data-layer
     networks:
       - dev-hub
@@ -46,7 +46,7 @@ services:
   # Services from dev-hub-data
   postgres-database:
     extends:
-      file: https://github.com/alejandronoss1017/dev-hub-data.git#develop:docker-compose.yaml
+      file: https://github.com/alejandronoss1017/dev-hub-data.git#main:docker-compose.yaml
       service: postgres-database
     networks:
       - dev-hub

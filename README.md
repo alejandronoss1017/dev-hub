@@ -4,9 +4,9 @@
 
 Before running Docker Compose, make sure to set up the environment variables for your system:
 
-For Windows 🪟:
+For Windows PowerShell 🪟:
 ```bash
-set COMPOSE_EXPERIMENTAL_GIT_REMOTE=1
+$env:COMPOSE_EXPERIMENTAL_GIT_REMOTE=1
 ```
 For Linux 🐧:
 ```bash
@@ -17,7 +17,7 @@ export COMPOSE_EXPERIMENTAL_GIT_REMOTE=1
 Run the following command to start the docker compose:
 
 ```bash
-docker compose -f compose.frontend.yaml up -d     
+docker compose -f compose.backend.yaml up -d     
 ```
 ### 🖥️ Running the Frontend Locally
 
