@@ -1,5 +1,17 @@
 # 🚀 Welcome! Follow these steps to run the project smoothly!
 
+Clone the repository:
+
+```bash
+git clone https://github.com/alejandronoss1017/dev-hub.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd dev-hub
+```
+
 ## 🛠️ Environment Setup
 
 Before running Docker Compose, make sure to set up the environment variables for your system:
